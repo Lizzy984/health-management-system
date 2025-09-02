@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NutriLearn - Food, Health & Education Hub</title>
+    <title>NutriLearn AI - Food, Health & Education Hub</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #4CAF50;
             --secondary: #FF9800;
             --accent: #2196F3;
+            --ai-purple: #9C27B0;
             --light: #f9f9f9;
             --dark: #333;
             --darker: #1a1a1a;
@@ -32,7 +33,7 @@
         }
 
         header {
-            background: linear-gradient(135deg, var(--primary), #2E7D32);
+            background: linear-gradient(135deg, var(--ai-purple), #7B1FA2);
             color: white;
             padding: 1rem;
             position: sticky;
@@ -93,7 +94,7 @@
         }
 
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
             color: white;
@@ -138,6 +139,14 @@
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
 
+        .btn-ai {
+            background: var(--ai-purple);
+        }
+
+        .btn-ai:hover {
+            background: #7B1FA2;
+        }
+
         .btn i {
             margin-right: 8px;
         }
@@ -151,7 +160,7 @@
         .section-title {
             text-align: center;
             margin-bottom: 2rem;
-            color: var(--primary);
+            color: var(--ai-purple);
             position: relative;
         }
 
@@ -162,6 +171,90 @@
             height: 3px;
             background: var(--secondary);
             margin: 0.5rem auto;
+        }
+
+        .ai-teacher {
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            margin-bottom: 3rem;
+        }
+
+        .ai-header {
+            background: linear-gradient(135deg, var(--ai-purple), #7B1FA2);
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .ai-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.8rem;
+            color: var(--ai-purple);
+        }
+
+        .ai-content {
+            padding: 1.5rem;
+        }
+
+        .chat-container {
+            height: 300px;
+            overflow-y: auto;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+
+        .message {
+            margin-bottom: 1rem;
+            display: flex;
+        }
+
+        .message.ai {
+            flex-direction: row;
+        }
+
+        .message.user {
+            flex-direction: row-reverse;
+        }
+
+        .message-content {
+            max-width: 70%;
+            padding: 0.8rem 1.2rem;
+            border-radius: 18px;
+        }
+
+        .message.ai .message-content {
+            background: #E8F5E9;
+            border-top-left-radius: 4px;
+        }
+
+        .message.user .message-content {
+            background: var(--accent);
+            color: white;
+            border-top-right-radius: 4px;
+        }
+
+        .chat-input {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
         }
 
         .features {
@@ -204,7 +297,7 @@
         }
 
         .feature-content h3 {
-            color: var(--primary);
+            color: var(--ai-purple);
             margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
@@ -214,18 +307,19 @@
             margin-right: 10px;
         }
 
-        .resources {
+        .ai-learning-path {
             background: var(--light);
             padding: 3rem 0;
+            margin: 3rem 0;
         }
 
-        .resource-grid {
+        .learning-modules {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
-        .resource-card {
+        .module {
             background: white;
             padding: 1.5rem;
             border-radius: 8px;
@@ -233,34 +327,48 @@
             transition: var(--transition);
         }
 
-        .resource-card:hover {
+        .module:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .resource-card h3 {
-            color: var(--accent);
+        .module h3 {
+            color: var(--ai-purple);
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
         }
 
-        .resource-card h3 i {
+        .module h3 i {
             margin-right: 10px;
         }
 
-        .resource-card ul {
+        .module ul {
             list-style-position: inside;
             margin-bottom: 1rem;
         }
 
-        .resource-card ul li {
+        .module ul li {
             margin-bottom: 0.5rem;
             transition: var(--transition);
         }
 
-        .resource-card ul li:hover {
-            color: var(--primary);
+        .module ul li:hover {
+            color: var(--ai-purple);
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #eee;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress {
+            height: 100%;
+            background: var(--ai-purple);
+            border-radius: 4px;
         }
 
         .calculator {
@@ -305,130 +413,6 @@
             border-radius: 8px;
             display: none;
             border-left: 4px solid var(--primary);
-        }
-
-        .food-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .food-item {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .food-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
-        }
-
-        .food-img {
-            height: 180px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-
-        .food-content {
-            padding: 1.2rem;
-        }
-
-        .food-content h3 {
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .food-content p {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .food-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 0.5rem;
-        }
-
-        .food-tag {
-            background: var(--light);
-            color: var(--dark);
-            padding: 0.2rem 0.6rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-        }
-
-        .recipe-section {
-            background: var(--light);
-            padding: 3rem 0;
-            margin: 3rem 0;
-        }
-
-        .recipe {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            margin-bottom: 2rem;
-        }
-
-        .recipe-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid #eee;
-        }
-
-        .recipe-content {
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .recipe-image {
-            flex: 1;
-            min-width: 300px;
-            height: 300px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .recipe-details {
-            flex: 1;
-            min-width: 300px;
-            padding: 1.5rem;
-        }
-
-        .recipe-ingredients,
-        .recipe-steps {
-            margin-bottom: 1.5rem;
-        }
-
-        .recipe-ingredients h4,
-        .recipe-steps h4 {
-            color: var(--primary);
-            margin-bottom: 0.8rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .recipe-ingredients h4 i,
-        .recipe-steps h4 i {
-            margin-right: 10px;
-        }
-
-        .recipe-ingredients ul,
-        .recipe-steps ol {
-            padding-left: 1.5rem;
-        }
-
-        .recipe-ingredients li,
-        .recipe-steps li {
-            margin-bottom: 0.5rem;
         }
 
         footer {
@@ -504,13 +488,8 @@
                 font-size: 2.2rem;
             }
 
-            .recipe-content {
-                flex-direction: column;
-            }
-
-            .recipe-image {
-                min-width: 100%;
-                height: 250px;
+            .message-content {
+                max-width: 85%;
             }
         }
     </style>
@@ -520,14 +499,14 @@
     <header>
         <nav>
             <div class="logo">
-                <span class="logo-icon"><i class="fas fa-apple-alt"></i></span>
-                NutriLearn
+                <span class="logo-icon"><i class="fas fa-robot"></i></span>
+                NutriLearn AI
             </div>
             <ul class="nav-links">
-                <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
-                <li><a href="#recipes"><i class="fas fa-utensils"></i> Recipes</a></li>
-                <li><a href="#gallery"><i class="fas fa-images"></i> Gallery</a></li>
+                <li><a href="#ai-teacher"><i class="fas fa-robot"></i> AI Teacher</a></li>
+                <li><a href="#learning"><i class="fas fa-graduation-cap"></i> Learning Path</a></li>
                 <li><a href="#calculator"><i class="fas fa-calculator"></i> Calculator</a></li>
+                <li><a href="#resources"><i class="fas fa-book"></i> Resources</a></li>
                 <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
             </ul>
             <button class="mobile-menu-btn">
@@ -538,201 +517,145 @@
 
     <section class="hero">
         <div class="hero-content">
-            <h1>Nourish Your Body, Feed Your Mind</h1>
-            <p>Discover healthy recipes, learn about nutrition, and join our mission for Zero Hunger through education
-            </p>
-            <a href="#recipes" class="btn"><i class="fas fa-utensils"></i> Explore Recipes</a>
+            <h1>Learn Nutrition with AI Assistance</h1>
+            <p>Your personal AI nutrition teacher is here to guide you through healthy eating habits, meal planning, and
+                nutritional science</p>
+            <a href="#ai-teacher" class="btn btn-ai"><i class="fas fa-robot"></i> Chat with NutriAI</a>
         </div>
     </section>
 
-    <section id="about" class="container">
-        <h2 class="section-title">Our Mission</h2>
+    <section id="ai-teacher" class="container">
+        <h2 class="section-title">Your AI Nutrition Teacher</h2>
+        <div class="ai-teacher">
+            <div class="ai-header">
+                <div class="ai-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div>
+                    <h3>NutriAI Assistant</h3>
+                    <p>Ready to teach you about nutrition</p>
+                </div>
+            </div>
+            <div class="ai-content">
+                <div class="chat-container" id="chat-container">
+                    <div class="message ai">
+                        <div class="message-content">
+                            <p>Hello! I'm NutriAI, your personal nutrition teacher. I can help you learn about healthy
+                                eating, explain nutritional concepts, and guide you through our learning modules. What
+                                would you like to learn about today?</p>
+                        </div>
+                    </div>
+                    <div class="message ai">
+                        <div class="message-content">
+                            <p>You can ask me questions like:<br>
+                                - "What are macronutrients?"<br>
+                                - "How do I plan a balanced meal?"<br>
+                                - "Explain the importance of fiber"<br>
+                                - "What foods are rich in antioxidants?"</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="user-input" placeholder="Ask me anything about nutrition...">
+                    <button class="btn" onclick="sendMessage()"><i class="fas fa-paper-plane"></i> Send</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="learning" class="ai-learning-path">
+        <div class="container">
+            <h2 class="section-title">AI-Powered Learning Path</h2>
+            <div class="learning-modules">
+                <div class="module">
+                    <h3><i class="fas fa-seedling"></i> Nutrition Fundamentals</h3>
+                    <ul>
+                        <li>Macronutrients explained</li>
+                        <li>Understanding micronutrients</li>
+                        <li>The digestive process</li>
+                        <li>Metabolism basics</li>
+                    </ul>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 30%"></div>
+                    </div>
+                    <p>30% completed</p>
+                    <a href="#" class="btn"><i class="fas fa-play"></i> Continue Learning</a>
+                </div>
+                <div class="module">
+                    <h3><i class="fas fa-apple-alt"></i> Healthy Eating Patterns</h3>
+                    <ul>
+                        <li>Building balanced meals</li>
+                        <li>Portion control guidance</li>
+                        <li>Meal timing strategies</li>
+                        <li>Mindful eating practices</li>
+                    </ul>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 15%"></div>
+                    </div>
+                    <p>15% completed</p>
+                    <a href="#" class="btn"><i class="fas fa-play"></i> Start Learning</a>
+                </div>
+                <div class="module">
+                    <h3><i class="fas fa-utensils"></i> Food Preparation</h3>
+                    <ul>
+                        <li>Cooking techniques</li>
+                        <li>Preserving nutrients</li>
+                        <li>Meal prep strategies</li>
+                        <li>Recipe modification</li>
+                    </ul>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 5%"></div>
+                    </div>
+                    <p>5% completed</p>
+                    <a href="#" class="btn"><i class="fas fa-play"></i> Start Learning</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2 class="section-title">How AI Enhances Your Learning</h2>
         <div class="features">
             <div class="feature-card">
                 <div class="feature-img"
-                    style="background-image: url('https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
-                    <span>Nutrition Education</span>
+                    style="background-image: url('https://images.unsplash.com/photo-1554475900-0e035f5c9ff6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                    <span>Personalized Learning</span>
                 </div>
                 <div class="feature-content">
-                    <h3><i class="fas fa-book"></i> Nutrition Education</h3>
-                    <p>We provide educational resources about balanced diets, food sources, and preparation methods to
-                        combat malnutrition.</p>
+                    <h3><i class="fas fa-user-graduate"></i> Personalized Learning</h3>
+                    <p>Our AI adapts to your knowledge level and learning pace, creating custom lesson plans based on
+                        your progress and interests.</p>
                 </div>
             </div>
             <div class="feature-card">
                 <div class="feature-img"
-                    style="background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
-                    <span>Sustainable Practices</span>
+                    style="background-image: url('https://images.unsplash.com/photo-1581093456870-8c8e2c6c8c8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                    <span>Instant Answers</span>
                 </div>
                 <div class="feature-content">
-                    <h3><i class="fas fa-seedling"></i> Sustainable Practices</h3>
-                    <p>Learn about sustainable farming, food preservation, and reducing waste to ensure food security
-                        for future generations.</p>
+                    <h3><i class="fas fa-comments"></i> Instant Answers</h3>
+                    <p>Get immediate responses to your nutrition questions anytime, with explanations tailored to your
+                        current understanding.</p>
                 </div>
             </div>
             <div class="feature-card">
                 <div class="feature-img"
-                    style="background-image: url('https://images.unsplash.com/photo-1532634922-8fe0b757fb13?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
-                    <span>Community Health</span>
+                    style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
+                    <span>Progress Tracking</span>
                 </div>
                 <div class="feature-content">
-                    <h3><i class="fas fa-heart"></i> Community Health</h3>
-                    <p>We connect communities with resources for better health outcomes through proper nutrition and
-                        lifestyle choices.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="gallery" class="container">
-        <h2 class="section-title">Healthy Food Gallery</h2>
-        <div class="food-gallery">
-            <div class="food-item">
-                <div class="food-img"
-                    style="background-image: url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
-                </div>
-                <div class="food-content">
-                    <h3>Fresh Salad Bowl</h3>
-                    <p>A colorful mix of fresh vegetables, nuts, and seeds with a light vinaigrette dressing.</p>
-                    <div class="food-tags">
-                        <span class="food-tag">Vegetarian</span>
-                        <span class="food-tag">Low Calorie</span>
-                    </div>
-                </div>
-            </div>
-            <div class="food-item">
-                <div class="food-img"
-                    style="background-image: url('https://images.unsplash.com/photo-1494597564530-871f2b93ac55?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
-                </div>
-                <div class="food-content">
-                    <h3>Avocado Toast</h3>
-                    <p>Whole grain bread topped with mashed avocado, cherry tomatoes, and microgreens.</p>
-                    <div class="food-tags">
-                        <span class="food-tag">Vegan</span>
-                        <span class="food-tag">High Fiber</span>
-                    </div>
-                </div>
-            </div>
-            <div class="food-item">
-                <div class="food-img"
-                    style="background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
-                </div>
-                <div class="food-content">
-                    <h3>Grilled Salmon</h3>
-                    <p>Atlantic salmon fillet grilled to perfection with herbs and served with steamed vegetables.</p>
-                    <div class="food-tags">
-                        <span class="food-tag">High Protein</span>
-                        <span class="food-tag">Omega-3</span>
-                    </div>
-                </div>
-            </div>
-            <div class="food-item">
-                <div class="food-img"
-                    style="background-image: url('https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
-                </div>
-                <div class="food-content">
-                    <h3>Fruit Smoothie Bowl</h3>
-                    <p>Blended tropical fruits topped with granola, coconut flakes, and fresh berries.</p>
-                    <div class="food-tags">
-                        <span class="food-tag">Vegan</span>
-                        <span class="food-tag">Antioxidants</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="recipes" class="recipe-section">
-        <div class="container">
-            <h2 class="section-title">Featured Recipes</h2>
-
-            <div class="recipe">
-                <div class="recipe-header">
-                    <h3>Quinoa Buddha Bowl</h3>
-                    <p>A nutrient-packed bowl with quinoa, roasted vegetables, and tahini dressing</p>
-                </div>
-                <div class="recipe-content">
-                    <div class="recipe-image"
-                        style="background-image: url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
-                    </div>
-                    <div class="recipe-details">
-                        <div class="recipe-ingredients">
-                            <h4><i class="fas fa-shopping-basket"></i> Ingredients</h4>
-                            <ul>
-                                <li>1 cup quinoa, rinsed</li>
-                                <li>2 cups water</li>
-                                <li>1 sweet potato, cubed</li>
-                                <li>1 red bell pepper, sliced</li>
-                                <li>1 cup broccoli florets</li>
-                                <li>2 tbsp olive oil</li>
-                                <li>1 avocado, sliced</li>
-                                <li>2 tbsp tahini</li>
-                                <li>1 lemon, juiced</li>
-                                <li>Salt and pepper to taste</li>
-                            </ul>
-                        </div>
-                        <div class="recipe-steps">
-                            <h4><i class="fas fa-list-ol"></i> Preparation</h4>
-                            <ol>
-                                <li>Preheat oven to 400°F (200°C)</li>
-                                <li>Cook quinoa in water according to package instructions</li>
-                                <li>Toss sweet potato, bell pepper, and broccoli with olive oil and seasonings</li>
-                                <li>Roast vegetables for 20-25 minutes until tender</li>
-                                <li>Whisk together tahini, lemon juice, and water to make dressing</li>
-                                <li>Assemble bowls with quinoa, roasted vegetables, and avocado</li>
-                                <li>Drizzle with tahini dressing and serve</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="recipe">
-                <div class="recipe-header">
-                    <h3>Mediterranean Stuffed Bell Peppers</h3>
-                    <p>Colorful bell peppers filled with a savory mixture of grains, vegetables, and herbs</p>
-                </div>
-                <div class="recipe-content">
-                    <div class="recipe-image"
-                        style="background-image: url('https://images.unsplash.com/photo-1540420773420-3366772f4999?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
-                    </div>
-                    <div class="recipe-details">
-                        <div class="recipe-ingredients">
-                            <h4><i class="fas fa-shopping-basket"></i> Ingredients</h4>
-                            <ul>
-                                <li>4 large bell peppers</li>
-                                <li>1 cup cooked brown rice</li>
-                                <li>1 can chickpeas, rinsed</li>
-                                <li>1 cup cherry tomatoes, halved</li>
-                                <li>1/2 cup feta cheese, crumbled</li>
-                                <li>2 tbsp olive oil</li>
-                                <li>1 tsp dried oregano</li>
-                                <li>Fresh parsley for garnish</li>
-                                <li>Salt and pepper to taste</li>
-                            </ul>
-                        </div>
-                        <div class="recipe-steps">
-                            <h4><i class="fas fa-list-ol"></i> Preparation</h4>
-                            <ol>
-                                <li>Preheat oven to 375°F (190°C)</li>
-                                <li>Cut tops off bell peppers and remove seeds</li>
-                                <li>In a bowl, mix rice, chickpeas, tomatoes, feta, and herbs</li>
-                                <li>Stuff mixture into bell peppers</li>
-                                <li>Place in baking dish and drizzle with olive oil</li>
-                                <li>Bake for 25-30 minutes until peppers are tender</li>
-                                <li>Garnish with fresh parsley and serve</li>
-                            </ol>
-                        </div>
-                    </div>
+                    <h3><i class="fas fa-chart-line"></i> Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed analytics and receive personalized recommendations
+                        for improvement.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="calculator" class="container">
-        <h2 class="section-title">Nutrition Calculator</h2>
+        <h2 class="section-title">AI Nutrition Calculator</h2>
         <div class="calculator">
-            <p>Calculate your daily nutritional needs and get personalized recommendations.</p>
+            <p>Calculate your daily nutritional needs with AI-powered personalized recommendations.</p>
 
             <div class="form-group">
                 <label for="age"><i class="fas fa-birthday-cake"></i> Age</label>
@@ -770,10 +693,11 @@
                 </select>
             </div>
 
-            <button class="btn" onclick="calculateNutrition()"><i class="fas fa-calculator"></i> Calculate</button>
+            <button class="btn btn-ai" onclick="calculateNutrition()"><i class="fas fa-calculator"></i> Calculate with
+                AI</button>
 
             <div id="result" class="result">
-                <h3><i class="fas fa-chart-pie"></i> Your Daily Nutrition Needs:</h3>
+                <h3><i class="fas fa-robot"></i> Your AI-Powered Nutrition Plan:</h3>
                 <p id="calories"></p>
                 <p id="protein"></p>
                 <p id="carbs"></p>
@@ -783,40 +707,38 @@
         </div>
     </section>
 
-    <section id="resources" class="resources">
-        <div class="container">
-            <h2 class="section-title">Learning Resources</h2>
-            <div class="resource-grid">
-                <div class="resource-card">
-                    <h3><i class="fas fa-book"></i> Nutrition Guides</h3>
-                    <ul>
-                        <li>Balanced diet fundamentals</li>
-                        <li>Food groups and portions</li>
-                        <li>Special dietary needs</li>
-                        <li>Budget-friendly nutrition</li>
-                    </ul>
-                    <a href="#" class="btn">Download PDF</a>
-                </div>
-                <div class="resource-card">
-                    <h3><i class="fas fa-utensils"></i> Recipes & Meal Planning</h3>
-                    <ul>
-                        <li>Quick healthy recipes</li>
-                        <li>Meal prep strategies</li>
-                        <li>Seasonal eating guide</li>
-                        <li>Reducing food waste</li>
-                    </ul>
-                    <a href="#" class="btn">Explore Recipes</a>
-                </div>
-                <div class="resource-card">
-                    <h3><i class="fas fa-hands-helping"></i> Community Programs</h3>
-                    <ul>
-                        <li>Local food banks</li>
-                        <li>Community gardens</li>
-                        <li>School nutrition programs</li>
-                        <li>Cooking workshops</li>
-                    </ul>
-                    <a href="#" class="btn">Find Programs</a>
-                </div>
+    <section id="resources" class="container">
+        <h2 class="section-title">AI-Curated Learning Resources</h2>
+        <div class="learning-modules">
+            <div class="module">
+                <h3><i class="fas fa-book"></i> Interactive Guides</h3>
+                <ul>
+                    <li>Macronutrients Deep Dive</li>
+                    <li>Micronutrients Encyclopedia</li>
+                    <li>Food Groups Explorer</li>
+                    <li>Dietary Patterns Guide</li>
+                </ul>
+                <a href="#" class="btn"><i class="fas fa-download"></i> Download PDF</a>
+            </div>
+            <div class="module">
+                <h3><i class="fas fa-video"></i> Video Lessons</h3>
+                <ul>
+                    <li>Cooking Demonstrations</li>
+                    <li>Nutrition Science Explained</li>
+                    <li>Meal Planning Workshops</li>
+                    <li>Expert Interviews</li>
+                </ul>
+                <a href="#" class="btn"><i class="fas fa-play-circle"></i> Watch Now</a>
+            </div>
+            <div class="module">
+                <h3><i class="fas fa-tasks"></i> Interactive Quizzes</h3>
+                <ul>
+                    <li>Nutrition Knowledge Test</li>
+                    <li>Food Identification</li>
+                    <li>Meal Balancing Challenge</li>
+                    <li>Nutrient Matching Game</li>
+                </ul>
+                <a href="#" class="btn"><i class="fas fa-gamepad"></i> Start Quiz</a>
             </div>
         </div>
     </section>
@@ -825,24 +747,23 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>About NutriLearn</h3>
-                    <p>We are dedicated to fighting hunger through education, promoting sustainable food practices, and
-                        improving community health outcomes.</p>
+                    <h3>About NutriLearn AI</h3>
+                    <p>We combine artificial intelligence with nutritional science to create personalized learning
+                        experiences that help you understand and implement healthy eating habits.</p>
                 </div>
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#recipes">Recipes</a></li>
-                        <li><a href="#gallery">Food Gallery</a></li>
+                        <li><a href="#ai-teacher">AI Teacher</a></li>
+                        <li><a href="#learning">Learning Path</a></li>
                         <li><a href="#calculator">Nutrition Calculator</a></li>
-                        <li><a href="#resources">Resources</a></li>
+                        <li><a href="#resources">Learning Resources</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h3>Contact Us</h3>
                     <ul class="footer-links">
-                        <li><i class="fas fa-envelope"></i> info@nutrilearn.org</li>
+                        <li><i class="fas fa-envelope"></i> info@nutrilearna.com</li>
                         <li><i class="fas fa-phone"></i> +254 715 027 595</li>
                         <li><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</li>
                         <li><i class="fas fa-clock"></i> Mon-Fri: 8AM-6PM EAT</li>
@@ -850,7 +771,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 NutriLearn - Food, Health & Education Hub. All rights reserved.</p>
+                <p>&copy; 2023 NutriLearn AI - Food, Health & Education Hub. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -914,34 +835,60 @@
             document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Add interactivity to feature cards
-        document.querySelectorAll('.feature-card').forEach(card => {
-            card.addEventListener('click', function () {
-                alert(`You selected: ${this.querySelector('h3').textContent}`);
-            });
-        });
+        function sendMessage() {
+            const userInput = document.getElementById('user-input');
+            const message = userInput.value.trim();
 
-        // Add interactivity to food items
-        document.querySelectorAll('.food-item').forEach(item => {
-            item.addEventListener('click', function () {
-                alert(`You selected: ${this.querySelector('h3').textContent}`);
-            });
+            if (message === '') return;
+
+            // Add user message to chat
+            const chatContainer = document.getElementById('chat-container');
+            const userMessageDiv = document.createElement('div');
+            userMessageDiv.className = 'message user';
+            userMessageDiv.innerHTML = `<div class="message-content"><p>${message}</p></div>`;
+            chatContainer.appendChild(userMessageDiv);
+
+            // Clear input
+            userInput.value = '';
+
+            // Simulate AI response
+            setTimeout(() => {
+                const aiResponseDiv = document.createElement('div');
+                aiResponseDiv.className = 'message ai';
+
+                // Simple response logic
+                let response = "I understand you're asking about nutrition. As an AI assistant, I can explain concepts like macronutrients, vitamins, meal planning, and healthy eating patterns. Would you like me to elaborate on any specific topic?";
+
+                if (message.toLowerCase().includes('macronutrient')) {
+                    response = "Macronutrients are nutrients that provide calories or energy. There are three macronutrients: proteins, carbohydrates, and fats. Each plays a unique role in maintaining health and providing energy for your body.";
+                } else if (message.toLowerCase().includes('fiber') || message.toLowerCase().includes('fibre')) {
+                    response = "Fiber is a type of carbohydrate that the body can't digest. It helps maintain bowel health, lowers cholesterol levels, helps control blood sugar levels, and aids in achieving healthy weight. Good sources include fruits, vegetables, whole grains, and legumes.";
+                } else if (message.toLowerCase().includes('vitamin')) {
+                    response = "Vitamins are essential organic compounds that your body needs in small amounts for normal growth and function. There are 13 essential vitamins, each with specific roles in maintaining health. They're categorized as fat-soluble (A, D, E, K) or water-soluble (B-complex, C).";
+                }
+
+                aiResponseDiv.innerHTML = `<div class="message-content"><p>${response}</p></div>`;
+                chatContainer.appendChild(aiResponseDiv);
+
+                // Scroll to bottom of chat
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }, 1000);
+
+            // Scroll to bottom of chat
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        // Add Enter key support for chat
+        document.getElementById('user-input').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
         });
 
         // Mobile menu toggle
         document.querySelector('.mobile-menu-btn').addEventListener('click', function () {
             const navLinks = document.querySelector('.nav-links');
             navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-        });
-
-        // Make all buttons and links work
-        document.querySelectorAll('.btn').forEach(btn => {
-            btn.addEventListener('click', function (e) {
-                if (this.getAttribute('href') === '#') {
-                    e.preventDefault();
-                    alert('This feature would open a download/link in a real application');
-                }
-            });
         });
 
         // Smooth scrolling for navigation links

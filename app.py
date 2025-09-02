@@ -72,7 +72,7 @@ def generate_flashcards_api():
             'success': True,
             'flashcards': flashcards,
             'count': len(flashcards)
-        })
+        }) 
         
     except Exception as e:
         return jsonify({
